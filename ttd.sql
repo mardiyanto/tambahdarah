@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04 Des 2023 pada 03.49
+-- Generation Time: 04 Des 2023 pada 10.13
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -62,17 +62,32 @@ CREATE TABLE `basis_pengetahuan` (
 --
 
 INSERT INTO `basis_pengetahuan` (`kode_pengetahuan`, `kode_penyakit`, `kode_gejala`, `mb`, `md`) VALUES
-(1, 1, 7, 1.0, 0.8),
-(2, 1, 5, 1.0, 0.8),
-(3, 1, 10, 1.0, 0.8),
-(4, 1, 6, 1.0, 0.8),
-(5, 1, 8, 1.0, 0.8),
-(6, 1, 2, 1.0, 0.8),
-(7, 1, 11, 1.0, 0.8),
-(8, 1, 3, 1.0, 0.8),
-(9, 1, 4, 1.0, 0.8),
-(10, 1, 1, 1.0, 0.8),
-(11, 1, 9, 1.0, 0.8);
+(1, 5, 1, 1.0, 0.6),
+(2, 5, 2, 1.0, 0.6),
+(3, 5, 3, 0.8, 0.4),
+(4, 5, 4, 0.8, 0.4),
+(5, 5, 5, 0.6, 0.2),
+(6, 4, 6, 1.0, 0.8),
+(7, 4, 7, 1.0, 0.8),
+(8, 4, 8, 0.8, 0.4),
+(9, 4, 9, 1.0, 0.8),
+(10, 4, 17, 0.8, 0.4),
+(11, 1, 1, 1.0, 0.4),
+(12, 1, 5, 1.0, 0.8),
+(13, 1, 4, 0.8, 0.4),
+(14, 1, 10, 1.0, 0.8),
+(15, 1, 11, 1.0, 0.8),
+(16, 1, 12, 0.8, 0.4),
+(17, 3, 1, 1.0, 0.8),
+(18, 3, 5, 0.8, 0.4),
+(19, 3, 13, 1.0, 0.8),
+(20, 3, 14, 1.0, 0.4),
+(21, 3, 15, 1.0, 0.8),
+(22, 4, 1, 0.8, 0.4),
+(23, 4, 7, 1.0, 0.4),
+(24, 4, 8, 0.8, 0.4),
+(25, 4, 17, 0.8, 0.4),
+(26, 4, 18, 1.0, 0.8);
 
 -- --------------------------------------------------------
 
@@ -82,7 +97,7 @@ INSERT INTO `basis_pengetahuan` (`kode_pengetahuan`, `kode_penyakit`, `kode_geja
 
 CREATE TABLE `gejala` (
   `kode_gejala` int(11) NOT NULL,
-  `nama_gejala` varchar(50) NOT NULL
+  `nama_gejala` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -90,17 +105,25 @@ CREATE TABLE `gejala` (
 --
 
 INSERT INTO `gejala` (`kode_gejala`, `nama_gejala`) VALUES
-(1, 'Pusing dan sakit kepala '),
-(2, 'Lemas dan mudah lelah'),
-(3, 'Napas pendek'),
-(4, 'Nyeri pada dada'),
-(5, 'Kaki dan tangan dingin'),
-(6, 'Kulit terlihat pucat'),
-(7, 'Detak jantung tidak teratur'),
-(8, 'Lebih cepat atau lebih sering mengantuk'),
-(9, 'Sembelit (konstipasi)'),
-(10, 'Kuku menjadi rapuh'),
-(11, 'Lidah terasa sakit');
+(1, 'Kelelahan Berlebihan: Rasa lelah yang terus-menerus, bahkan setelah istirahat yang cukup.'),
+(2, 'Infeksi yang Sering atau Berat: Rentan terhadap infeksi karena jumlah sel darah putih yang rendah.'),
+(3, 'Memar dan Perdarahan yang Mudah: Perdarahan gusi yang berlebihan, memar tanpa sebab yang jelas, atau perdarahan yang sulit dihentikan.'),
+(4, 'Napas Pendek: Terkadang dapat disertai dengan denyut jantung yang cepat.'),
+(5, 'Pucat Kulit: Warna kulit yang pucat bisa menjadi tanda anemia yang parah.'),
+(6, 'Kelelahan yang Luar Biasa: Kelelahan yang terus menerus bahkan setelah istirahat yang cukup, karena tubuh tidak dapat menghasilkan cukup sel darah merah untuk membawa oksigen ke seluruh tubuh.'),
+(7, 'Kuning pada Kulit dan Mata (Jaundice): Kuningnya kulit, mata, dan kulit putih disebabkan oleh penumpukan bilirubin, sebuah zat yang dihasilkan ketika sel darah merah dihancurkan, dan biasanya disaring oleh hati.'),
+(8, 'Urin Gelap: Urin yang tampak lebih gelap dari biasanya karena meningkatnya produksi bilirubin yang dikeluarkan melalui urin.'),
+(9, 'Perubahan pada Selaput Lendir: Kulit dan mata yang kuning, selain itu, lidah dan gusi mungkin tampak pucat.'),
+(10, 'Kuku Rapuh dan Rambut Rontok: Kuku menjadi rapuh dan mungkin ada kecenderungan rambut rontok lebih banyak dari biasanya.'),
+(11, 'Pengalaman Rasa Lemah: Beberapa orang merasa lemah, lesu, atau kurang konsentrasi pada aktivitas sehari-hari.'),
+(12, 'Gangguan Pada Lidah: Lidah yang menjadi pucat atau terasa tidak nyaman, atau kadang-kadang dapat muncul luka kecil pada sudut-sudut mulut.'),
+(13, 'Gangguan pada Selaput Lendir: Lidah yang meradang (glossitis) atau tampak pucat, serta perubahan pada selaput lendir mulut.'),
+(14, 'Gangguan Pencernaan: Gejala seperti diare, konstipasi, atau gangguan pencernaan lainnya.'),
+(15, 'Gangguan Mental atau Emosional'),
+(17, 'Peningkatan Detak Jantung (Tachycardia): Terkadang disertai dengan napas cepat atau terengah-engah.'),
+(18, 'Perdarahan dan Memar yang Mudah: Terdapat cenderung lebih banyak perdarahan dan muncul memar dengan mudah.'),
+(19, 'Kesemutan atau Mati Rasa: Terutama di tangan atau kaki.'),
+(20, 'Perubahan Pada Sistem Saraf: Gangguan seperti kesulitan berjalan, kebingungan, atau bahkan demensia ringan pada kasus yang parah.');
 
 -- --------------------------------------------------------
 
@@ -122,7 +145,8 @@ CREATE TABLE `hasil` (
 --
 
 INSERT INTO `hasil` (`id_hasil`, `tanggal`, `penyakit`, `gejala`, `hasil_id`, `hasil_nilai`) VALUES
-(1, '2023-12-04 09:46:43', 'a:0:{}', 'a:0:{}', 0, '');
+(1, '2023-12-04 15:29:08', 'a:0:{}', 'a:0:{}', 0, ''),
+(2, '2023-12-04 16:01:24', 'a:4:{i:1;s:6:\"0.8346\";i:5;s:6:\"0.8140\";i:4;s:6:\"0.4757\";i:3;s:6:\"0.4547\";}', 'a:19:{i:1;s:1:\"1\";i:2;s:1:\"5\";i:3;s:1:\"1\";i:4;s:1:\"3\";i:5;s:1:\"1\";i:6;s:1:\"4\";i:7;s:1:\"2\";i:8;s:1:\"9\";i:9;s:1:\"8\";i:10;s:1:\"3\";i:11;s:1:\"4\";i:12;s:1:\"4\";i:13;s:1:\"4\";i:14;s:1:\"6\";i:15;s:1:\"1\";i:17;s:1:\"1\";i:18;s:1:\"5\";i:19;s:1:\"5\";i:20;s:1:\"5\";}', 1, '0.8346');
 
 -- --------------------------------------------------------
 
@@ -136,30 +160,20 @@ CREATE TABLE `kondisi` (
   `ket` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Struktur dari tabel `menu`
+-- Dumping data untuk tabel `kondisi`
 --
 
-CREATE TABLE `menu` (
-  `id_menu` int(11) NOT NULL,
-  `nama_menu` varchar(250) NOT NULL,
-  `link` varchar(520) NOT NULL,
-  `link_b` varchar(100) NOT NULL,
-  `icon_menu` varchar(100) NOT NULL,
-  `status` varchar(25) NOT NULL,
-  `aktif` varchar(11) NOT NULL DEFAULT 'Y'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `menu`
---
-
-INSERT INTO `menu` (`id_menu`, `nama_menu`, `link`, `link_b`, `icon_menu`, `status`, `aktif`) VALUES
-(1, 'SETTING', 'index.php?aksi=profil', '', 'fa-bar-chart-o', 'admin', 'Y'),
-(14, 'MENU', 'index.php?aksi=menu', '', 'fa-file-text', 'admin', 'Y'),
-(18, 'SUB MENU', 'index.php?aksi=submenu', '', 'fa-calendar-minus-o', 'admin', 'Y');
+INSERT INTO `kondisi` (`id`, `kondisi`, `ket`) VALUES
+(1, 'Pasti ya', ''),
+(2, 'Hampir pasti ya', ''),
+(3, 'Kemungkinan besar ya', ''),
+(4, 'Mungkin ya', ''),
+(5, 'Tidak tahu', ''),
+(6, 'Mungkin tidak', ''),
+(7, 'Kemungkinan besar tidak', ''),
+(8, 'Hampir pasti tidak', ''),
+(9, 'Pasti tidak', '');
 
 -- --------------------------------------------------------
 
@@ -180,7 +194,11 @@ CREATE TABLE `penyakit` (
 --
 
 INSERT INTO `penyakit` (`kode_penyakit`, `nama_penyakit`, `det_penyakit`, `srn_penyakit`, `gambar`) VALUES
-(1, 'HARUS MENONSUMSI PIL DARAH', 'KURANG DARAH', 'KONSUMSI 4X SEHARI', 'D.jpg');
+(1, 'Anemia Defisiensi Besi', 'Salah satu penyebab paling umum anemia. Gejalanya meliputi kelelahan, kulit pucat, napas pendek, denyut jantung cepat, dan rambut rontok.', 'konsumsi obat 3x2 sehari', 'anemia-defisiensi-besi-1551067633.webp'),
+(2, 'Anemia Defisiensi Vitamin B12', 'Penyebabnya bisa karena diet yang kurang vitamin B12 atau masalah penyerapan. Gejalanya meliputi kelelahan, kesemutan atau mati rasa di tangan dan kaki, gangguan pencernaan, serta perubahan mental seperti kebingungan atau depresi.', '3x1', 'anemia-defisiensi-vitamin-b12-dan-folat-1573614627.jpg'),
+(3, 'Anemia Defisiensi Asam Folat', 'Kurangnya asam folat dalam tubuh dapat menyebabkan anemia. Gejalanya mirip dengan anemia defisiensi besi, yaitu kelelahan, kulit pucat, serta perubahan pada selaput lendir dan lidah.', '3x1', 'anemia-defisiensi-vitamin-b12-dan-folat-thumb-1573614627.jpg'),
+(4, 'Anemia Hemolitik', 'Jenis anemia di mana sel darah merah dihancurkan lebih cepat dari biasanya. Gejalanya meliputi kelelahan, kuning pada kulit dan mata (jaundice), serta perubahan warna urine yang menjadi gelap.', '3x1', 'anemia-hemolitik-1573614704.webp'),
+(5, 'Anemia Aplastik', 'Terjadi ketika sumsum tulang tidak membuat jumlah sel darah merah yang cukup. Gejalanya dapat termasuk kelelahan, infeksi yang sering, dan memar dengan mudah.', '3x1', 'Aplastic-Anaemia_indo.jpg');
 
 -- --------------------------------------------------------
 
@@ -195,55 +213,6 @@ CREATE TABLE `post` (
   `srn_post` varchar(15000) NOT NULL,
   `gambar` varchar(500) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `profil`
---
-
-CREATE TABLE `profil` (
-  `id_profil` int(20) NOT NULL,
-  `nama_app` varchar(100) NOT NULL,
-  `tahun` varchar(250) NOT NULL,
-  `nama` varchar(250) NOT NULL,
-  `alias` varchar(350) NOT NULL,
-  `alamat` text NOT NULL,
-  `isi` text NOT NULL,
-  `gambar` varchar(100) NOT NULL,
-  `akabest` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `profil`
---
-
-INSERT INTO `profil` (`id_profil`, `nama_app`, `tahun`, `nama`, `alias`, `alamat`, `isi`, `gambar`, `akabest`) VALUES
-(1, 'QUICK COUNT', '2022/2023', 'DEWAN PENGAWAS PROGRAMING', 'DPRD PRINGSEWU', 'JL Wismarini No 09 Pringsewu Lampung', '', '26122022051024.jpg', 'mardybest@gmail.com'),
-(2, 're', '', 'MARDIYANTO', '19081989578978975', '', '', '', '');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `submenu`
---
-
-CREATE TABLE `submenu` (
-  `id_submenu` int(100) NOT NULL,
-  `id_menu` int(100) NOT NULL,
-  `nama_sub` varchar(100) NOT NULL,
-  `link_sub` text NOT NULL,
-  `icon_sub` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `submenu`
---
-
-INSERT INTO `submenu` (`id_submenu`, `id_menu`, `nama_sub`, `link_sub`, `icon_sub`) VALUES
-(1, 10, 'DESA', 'index.php?aksi=desa', 'fa-exchange'),
-(2, 10, 'KECAMATAN', 'index.php?aksi=kecamatan', 'fa-exchange'),
-(3, 10, 'TPS', 'index.php?aksi=tps', 'fa-exchange');
 
 --
 -- Indexes for dumped tables
@@ -280,12 +249,6 @@ ALTER TABLE `kondisi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menu`
---
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id_menu`);
-
---
 -- Indexes for table `penyakit`
 --
 ALTER TABLE `penyakit`
@@ -298,18 +261,6 @@ ALTER TABLE `post`
   ADD PRIMARY KEY (`kode_post`);
 
 --
--- Indexes for table `profil`
---
-ALTER TABLE `profil`
-  ADD PRIMARY KEY (`id_profil`);
-
---
--- Indexes for table `submenu`
---
-ALTER TABLE `submenu`
-  ADD PRIMARY KEY (`id_submenu`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -317,47 +268,32 @@ ALTER TABLE `submenu`
 -- AUTO_INCREMENT for table `basis_pengetahuan`
 --
 ALTER TABLE `basis_pengetahuan`
-  MODIFY `kode_pengetahuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `kode_pengetahuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `gejala`
 --
 ALTER TABLE `gejala`
-  MODIFY `kode_gejala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `kode_gejala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `hasil`
 --
 ALTER TABLE `hasil`
-  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `kondisi`
 --
 ALTER TABLE `kondisi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `menu`
---
-ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `penyakit`
 --
 ALTER TABLE `penyakit`
-  MODIFY `kode_penyakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `kode_penyakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `kode_post` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `profil`
---
-ALTER TABLE `profil`
-  MODIFY `id_profil` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `submenu`
---
-ALTER TABLE `submenu`
-  MODIFY `id_submenu` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `kode_post` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
