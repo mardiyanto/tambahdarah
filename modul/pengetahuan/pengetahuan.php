@@ -218,7 +218,7 @@ switch($_GET[act]){
               </div>
           <form name=text_form method=POST action='$aksi?module=pengetahuan&act=input' onsubmit='return Blank_TextField_Validator()'>
           <br><br><table class='table table-bordered'>
-		  <tr><td width=120>Penyakit</td><td><select class='form-control' name='kode_penyakit'  id='kode_penyakit'><option value=''>- Pilih Penyakit -</option>";
+		  <tr><td width=120>Penyakit</td><td><select class='form-control select2' name='kode_penyakit'  id='kode_penyakit'><option value=''>- Pilih Penyakit -</option>";
 		$hasil4 = mysqli_query($conn,"SELECT * FROM penyakit order by nama_penyakit");
 		while($r4=mysqli_fetch_array($hasil4)){
 			echo "<option value='$r4[kode_penyakit]'>$r4[nama_penyakit]</option>";
