@@ -113,8 +113,8 @@
                        
                             <img src="aset/banner/icon2.png" alt="">
                         
-                        <h2>Sahabat Peternak</h2>
-                        <p>Sistem Pakar ini terus di sesuaikan perhitungan diagnosanya, supaya akurasi terhadap penyakit yang diderita lebih sesuai dan  menjadi acuan peternak.</p>
+                        <h2>Anemia</h2>
+                        <p>Anemia adalah kondisi ketika tubuh tidak memiliki jumlah sel darah merah yang cukup atau kadar hemoglobin yang cukup dalam darah untuk mengangkut oksigen ke seluruh tubuh dengan efektif. </p>
                     </div>
                 </div>
                 <div class="col-sm-4 text-center padding wow fadeIn animated" data-wow-duration="1000ms" data-wow-delay="900ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 900ms; animation-name: fadeIn;">

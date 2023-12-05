@@ -224,7 +224,7 @@ switch($_GET[act]){
 			echo "<option value='$r4[kode_penyakit]'>$r4[nama_penyakit]</option>";
 		}
 		echo	"</select></td></tr>
-		<tr><td>Gejala</td><td><select class='form-control' name='kode_gejala' id='kode_gejala'><option value=''>- Pilih Gejala -</option>";
+		<tr><td>Gejala</td><td><select class='form-control select2' name='kode_gejala' id='kode_gejala'><option value=''>- Pilih Gejala -</option>";
 		$hasil4 = mysqli_query($conn,"SELECT * FROM gejala order by nama_gejala");
 		while($r4=mysqli_fetch_array($hasil4)){
 			echo "<option value='$r4[kode_gejala]'>$r4[nama_gejala]</option>";

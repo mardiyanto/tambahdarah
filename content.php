@@ -15,6 +15,8 @@ include "modul/penyakit/penyakit.php";
 include "modul/post/post.php";
 }elseif ($module == "admin"){
 include "modul/admin/admin.php";
+}elseif ($module == "member"){
+include "modul/member/member.php";
 }elseif ($module == "gejala"){
 include "modul/gejala/gejala.php";
 }elseif ($module == "pengetahuan"){
