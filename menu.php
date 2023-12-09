@@ -12,6 +12,8 @@ $module = $_GET['module'];
       <div class="container"></div>	
     <li><a <?php if ($module == "gejala") echo 'class="active"'; ?> href="gejala"><i class="fa fa-eyedropper"></i> <span>Gejala</span></a><li>
       <div class="container"></div>
+    <li><a <?php if ($module == "member") echo 'class="active"'; ?> href="member"><i class="fa fa-user-plus"></i> <span>member</span></a><li>
+    <div class="container"></div>  
     <li><a <?php if ($module == "pengetahuan") echo 'class="active"'; ?> href="pengetahuan"><i class="fa fa-flask"></i> <span>Pengetahuan</span></a><li>
       <div class="container"></div>
     <li><a <?php if ($module == "post") echo 'class="active"'; ?> href="post"><i class="fa fa-file-text"></i> <span>Post Keterangan</span></a><li>
