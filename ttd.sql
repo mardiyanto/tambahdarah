@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05 Des 2023 pada 08.38
+-- Generation Time: 09 Des 2023 pada 07.42
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -188,18 +188,11 @@ CREATE TABLE `member` (
   `jenis_kelamin` varchar(100) NOT NULL,
   `no_hp` varchar(100) NOT NULL,
   `tempat_lahir` varchar(100) NOT NULL,
-  `tgl_kahir` varchar(100) NOT NULL,
+  `tgl_lahir` varchar(100) NOT NULL,
   `alamat` text NOT NULL,
   `password` varchar(100) NOT NULL,
   `show_pass` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `member`
---
-
-INSERT INTO `member` (`id_member`, `nama`, `email`, `jenis_kelamin`, `no_hp`, `tempat_lahir`, `tgl_kahir`, `alamat`, `password`, `show_pass`) VALUES
-(1, 'agag', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -320,7 +313,7 @@ ALTER TABLE `kondisi`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `id_member` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_member` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `penyakit`
 --
