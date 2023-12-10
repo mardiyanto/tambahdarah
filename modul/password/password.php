@@ -1,6 +1,6 @@
 <title>Ubah Password - Chirexs 1.0</title>
 <?php
-if ($_SESSION[username] != "" && $_SESSION[password] != ""){
+if ($_SESSION[user] != "" && $_SESSION[pass] != ""){
 switch($_GET[act]){
 default:
 echo "	<form method='post' action='?module=password&act=updatepassword'>
@@ -10,8 +10,8 @@ echo "	<form method='post' action='?module=password&act=updatepassword'>
 		<br><tr><td>Masukkan kembali password baru</td><td><input class='form-control' autocomplete='off' placeholder='Ulangi password baru...' type='password' name='newPass2' /></td></tr>
 		<tr><td></td><td>
 		<input class='btn btn-success' type=submit name=submit title='Simpan' alt='Simpan' value='Simpan' />
-		<input type='hidden' name='pass' value='".$_SESSION[password]."'>
-		<input type='hidden' name='nama' value='".$_SESSION[username]."'></td></tr>
+		<input type='hidden' name='pass' value='".$_SESSION[pass]."'>
+		<input type='hidden' name='nama' value='".$_SESSION[user]."'></td></tr>
 		</table>		
 		</form>";
 break;
@@ -22,7 +22,7 @@ $user = $_POST['nama'];
 $passwordlama = $_POST['oldPass'];
 $passwordbaru1 = $_POST['newPass1'];
 $passwordbaru2 = $_POST['newPass2'];
-$query = "SELECT * FROM admin WHERE username = '$user'";
+$query = "SELECT * FROM member WHERE email = '$user'";
 $hasil = mysqli_query($conn, $query);
 $data  = mysqli_fetch_array($hasil);
 
@@ -31,7 +31,7 @@ if ($data['password'] ==  md5($passwordlama))
 	if ($passwordbaru1 == $passwordbaru2)
 	{
 		$passwordbaruenkrip = md5($passwordbaru1);
-		$query = "UPDATE admin SET password = '$passwordbaruenkrip' WHERE username = '$user' ";
+		$query = "UPDATE member SET password = '$passwordbaruenkrip', show_pass = '$passwordbaru1' WHERE email = '$user' ";
 		$hasil = mysqli_query($conn, $query);
 		
 		if ($hasil) echo "<h2><a href='#'></a></h1>Password berhasil diubah";

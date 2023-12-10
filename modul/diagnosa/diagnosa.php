@@ -81,6 +81,7 @@ switch ($_GET['act']) {
 
       mysqli_query($conn, "INSERT INTO hasil(
                   tanggal,
+                  id_member,
                   gejala,
                   penyakit,
                   hasil_id,
@@ -88,6 +89,7 @@ switch ($_GET['act']) {
 				  ) 
 	        VALUES(
                 '$inptanggal',
+                '$_SESSION[id_member]',
                 '$inpgejala',
                 '$inppenyakit',
                 '$idpkt1[1]',

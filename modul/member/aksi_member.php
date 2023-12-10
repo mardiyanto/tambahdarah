@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if (!(isset($_SESSION['username']) && isset($_SESSION['password']))) {
+if (!(isset($_SESSION['user']) && isset($_SESSION['pass']))) {
     header('location:index.php');
     exit();
 } else {

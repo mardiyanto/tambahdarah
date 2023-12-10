@@ -41,8 +41,9 @@ return (true);
 <input type="text" name="username" id="username" placeHolder="&#xf007;  Username" style="font-family:Arial, FontAwesome" />
 <input type="password" name="password" id="password" placeHolder="&#xf023;  Password" style="font-family:Arial, FontAwesome" />
 <input type="submit" name="submit" id="submitku" value="   Login   " /><br>
- <p class="message">Ingin mendaftar? <a href="https://goo.gl/forms/OlZywbPBrBcG2nSy1" target="_blank">Ajukan Permohonan</a></p>
+<p class="message">Ingin mendaftar? <a href="daftar/tambahdata" >Daftar</a></p>
   </form>
+   <a class='btn btn-success margin' href='lupa.php?t=lupa'> <i class="fa fa-user-plus" ></i>Lupa Password</a>
 </div>
 </body>
 

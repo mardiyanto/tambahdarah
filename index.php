@@ -12,7 +12,7 @@ include "config/fungsi_alert.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <base href="http://localhost/tambahdarah/">
+    <base href="<?php echo"$url"; ?>">
 	<link rel="icon" href="gambar/admin/favicon.png">
   <link href="css/font-awesome-4.2.0/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/owl-carousel/owl.carousel.css" rel="stylesheet"  media="all">
@@ -138,7 +138,7 @@ include "config/fungsi_alert.php";
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b><i class="fa fa-contao" aria-hidden="true"></i> AE</b></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b><i class="fa fa-contao" aria-hidden="true"></i> ANEMIA</b></span>
+          <span class="logo-lg"><b><i class="fa fa-contao" aria-hidden="true"></i> ANEMIA </b></span>
         </a>
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -150,11 +150,11 @@ include "config/fungsi_alert.php";
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <?php
-                if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
+                if (isset($_SESSION['user']) && isset($_SESSION['pass'])) {
                     ?>
                   <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <img src="gambar/admin/admin.png" class="user-image" alt="User Image"> <?php echo ucfirst($_SESSION['username']); ?>
+                      <img src="gambar/admin/admin.png" class="user-image" alt="User Image"> <?php echo ucfirst($_SESSION['user']); ?>
                       <span class="hidden-xs"><?php echo $user; ?></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -162,7 +162,7 @@ include "config/fungsi_alert.php";
                       <li class="user-header">
                         <img src="gambar/admin/admin.png" class="img-circle" alt="User Image">
                         <p>
-                         Login sebagai <?php echo ucfirst($_SESSION['username']); ?>
+                         Login sebagai <?php echo ucfirst($_SESSION['user']); ?>
                           <small>Pakar dari Chirexs 1.0</small>
                         </p>
                       </li>
@@ -174,7 +174,7 @@ include "config/fungsi_alert.php";
                       <!-- Menu Footer-->
                       <li class="user-footer"> 
                         <div class="pull-left">
-                          <a class="btn btn-default btn-flat" <?php if ($module == "tentang") echo 'class="class="btn btn-default btn-flat active"'; ?> href="?module=tentang"><i class="fa fa-info-circle"></i> <span>Tentang</span></a>
+                          <a class="btn btn-default btn-flat"  href="member/editmember/<?php echo ucfirst($_SESSION['id_member']); ?>"><i class="fa fa-info-circle"></i> <span>Profil</span></a>
                         </div>
                         <div class="pull-right">
                           <a class="btn btn-default btn-flat" href="JavaScript: confirmIt('Anda yakin akan logout dari aplikasi ?','logout.php','','','','u','n','Self','Self')" onMouseOver="self.status = ''; return true" onMouseOut="self.status = ''; return true"><i class="fa fa-sign-out"></i> <span>LogOut</span></a>
@@ -182,7 +182,7 @@ include "config/fungsi_alert.php";
                       </li>
                     </ul>
                   </li>
-              <?php } else { ?> <li><a <?php if ($module == "bantuan") echo 'class="active"'; ?> id="bantu" href="bantuan" data-toggle="tooltip" data-placement="bottom" data-delay='{"show":"300", "hide":"500"}' title="Silahkan klik link berikut, jika anda masih kurang paham tentang penggunaan aplikasi ini !"><i class="fa fa-question-circle"></i> <span>Bantuan</span></a></li>
+              <?php } else { ?> <li><a <?php if ($module == "bantuan") echo 'class="active"'; ?> id="bantu" href="daftar/tambahdata" data-toggle="tooltip" data-placement="bottom" data-delay='{"show":"300", "hide":"500"}' title="Silahkan klik link berikut, jika anda masih kurang paham tentang penggunaan aplikasi ini !"><i class="fa fa-question-circle"></i> <span>Daftar</span></a></li>
 				  <li class="dropdown messages-menu">
                     <a <?php if ($module == "formlogin") echo 'class="active"'; ?> href="formlogin"><i class="fa fa-sign-in"></i> <span>Login</span></a>
                   </li>
@@ -261,6 +261,7 @@ include "config/fungsi_alert.php";
         </div>
     </div>
 </div>
+
 <script>
 function kirimContactForm(){
     var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
@@ -308,7 +309,7 @@ function kirimContactForm(){
     }
 }
 </script>
-        <strong><div class="cinta">Copyright © 2017 - Made with <i class="fa fa-heart pulse"></i> by <a href="http://januriawan.github.io" target="_blank">Januriawan</a></div></strong>
+        <strong><div class="cinta">Copyright © 2023 - Made with <i class="fa fa-heart pulse"></i> by <a href="#" target="_blank">admin</a></div></strong>
       </footer>
       <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->

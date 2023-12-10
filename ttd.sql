@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Des 2023 pada 07.42
+-- Generation Time: 10 Des 2023 pada 14.00
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -40,8 +40,30 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`username`, `password`, `nama_lengkap`) VALUES
 ('admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator'),
-('RYU', 'f3770595e0cb4d9a988bd5da98d2187d', 'Rizky Yuni Utami'),
-('januriawan', '21232f297a57a5a743894a0e4a801fc3', 'Fajar Januriawan');
+('mardi', 'bfe563ddf6317ea93d23fb1291db0ea8', 'mardi');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `aturan_pemakaian_obat`
+--
+
+CREATE TABLE `aturan_pemakaian_obat` (
+  `id_aturan` int(11) NOT NULL,
+  `id_member` int(100) NOT NULL,
+  `nama_obat` varchar(100) NOT NULL,
+  `dosis` varchar(50) NOT NULL,
+  `waktu` varchar(50) NOT NULL,
+  `durasi_hari` int(11) NOT NULL,
+  `jadwal` int(2) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `aturan_pemakaian_obat`
+--
+
+INSERT INTO `aturan_pemakaian_obat` (`id_aturan`, `id_member`, `nama_obat`, `dosis`, `waktu`, `durasi_hari`, `jadwal`) VALUES
+(1, 14, 'SAMABION', '1 X 1 SEHARI SESUDAH MAKAN', '19:38', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -133,6 +155,7 @@ INSERT INTO `gejala` (`kode_gejala`, `nama_gejala`) VALUES
 
 CREATE TABLE `hasil` (
   `id_hasil` int(11) NOT NULL,
+  `id_member` varchar(50) NOT NULL,
   `tanggal` varchar(50) NOT NULL DEFAULT '0',
   `penyakit` text NOT NULL,
   `gejala` text NOT NULL,
@@ -140,13 +163,28 @@ CREATE TABLE `hasil` (
   `hasil_nilai` varchar(16) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `hasil`
+-- Struktur dari tabel `jadwal_pemakaian_obat`
 --
 
-INSERT INTO `hasil` (`id_hasil`, `tanggal`, `penyakit`, `gejala`, `hasil_id`, `hasil_nilai`) VALUES
-(1, '2023-12-04 15:29:08', 'a:0:{}', 'a:0:{}', 0, ''),
-(2, '2023-12-04 16:01:24', 'a:4:{i:1;s:6:\"0.8346\";i:5;s:6:\"0.8140\";i:4;s:6:\"0.4757\";i:3;s:6:\"0.4547\";}', 'a:19:{i:1;s:1:\"1\";i:2;s:1:\"5\";i:3;s:1:\"1\";i:4;s:1:\"3\";i:5;s:1:\"1\";i:6;s:1:\"4\";i:7;s:1:\"2\";i:8;s:1:\"9\";i:9;s:1:\"8\";i:10;s:1:\"3\";i:11;s:1:\"4\";i:12;s:1:\"4\";i:13;s:1:\"4\";i:14;s:1:\"6\";i:15;s:1:\"1\";i:17;s:1:\"1\";i:18;s:1:\"5\";i:19;s:1:\"5\";i:20;s:1:\"5\";}', 1, '0.8346');
+CREATE TABLE `jadwal_pemakaian_obat` (
+  `id_jadwal` int(11) NOT NULL,
+  `id_aturan` int(11) DEFAULT NULL,
+  `tanggal` date NOT NULL,
+  `waktu` varchar(50) NOT NULL,
+  `status` varchar(100) NOT NULL DEFAULT 'belum'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `jadwal_pemakaian_obat`
+--
+
+INSERT INTO `jadwal_pemakaian_obat` (`id_jadwal`, `id_aturan`, `tanggal`, `waktu`, `status`) VALUES
+(1, 1, '2023-12-10', '19:38', 'sudah'),
+(2, 1, '2023-12-11', '19:38', 'sudah'),
+(3, 1, '2023-12-12', '19:38', 'sudah');
 
 -- --------------------------------------------------------
 
@@ -191,8 +229,42 @@ CREATE TABLE `member` (
   `tgl_lahir` varchar(100) NOT NULL,
   `alamat` text NOT NULL,
   `password` varchar(100) NOT NULL,
-  `show_pass` varchar(100) NOT NULL
+  `show_pass` varchar(100) NOT NULL,
+  `token` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `member`
+--
+
+INSERT INTO `member` (`id_member`, `nama`, `email`, `jenis_kelamin`, `no_hp`, `tempat_lahir`, `tgl_lahir`, `alamat`, `password`, `show_pass`, `token`) VALUES
+(14, 'akabest', 'mardybest@gmail.com', 'Laki-Laki', '082373971991', 'akabest@gmail.com', '1991-12-10', 'jalan johar perumahan perdana village no. a40', '202cb962ac59075b964b07152d234b70', '123', ''),
+(15, 'mardi', 'akabest@gmail.com', 'Laki-Laki', '98080989', 'Gunung Sugih ', '2023-12-13', 'jalan johar perumahan perdana village no. a40', '202cb962ac59075b964b07152d234b70', '123', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `menu`
+--
+
+CREATE TABLE `menu` (
+  `id_menu` int(11) NOT NULL,
+  `nama_menu` varchar(250) NOT NULL,
+  `link` varchar(520) NOT NULL,
+  `link_b` varchar(100) NOT NULL,
+  `icon_menu` varchar(100) NOT NULL,
+  `status` varchar(25) NOT NULL,
+  `aktif` varchar(11) NOT NULL DEFAULT 'Y'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `menu`
+--
+
+INSERT INTO `menu` (`id_menu`, `nama_menu`, `link`, `link_b`, `icon_menu`, `status`, `aktif`) VALUES
+(1, 'SETTING', 'index.php?aksi=profil', '', 'fa-bar-chart-o', 'admin', 'Y'),
+(14, 'MENU', 'index.php?aksi=menu', '', 'fa-file-text', 'admin', 'Y'),
+(18, 'SUB MENU', 'index.php?aksi=submenu', '', 'fa-calendar-minus-o', 'admin', 'Y');
 
 -- --------------------------------------------------------
 
@@ -233,6 +305,55 @@ CREATE TABLE `post` (
   `gambar` varchar(500) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `profil`
+--
+
+CREATE TABLE `profil` (
+  `id_profil` int(20) NOT NULL,
+  `nama_app` varchar(100) NOT NULL,
+  `tahun` varchar(250) NOT NULL,
+  `nama` varchar(250) NOT NULL,
+  `alias` varchar(350) NOT NULL,
+  `alamat` text NOT NULL,
+  `isi` text NOT NULL,
+  `gambar` varchar(100) NOT NULL,
+  `akabest` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `profil`
+--
+
+INSERT INTO `profil` (`id_profil`, `nama_app`, `tahun`, `nama`, `alias`, `alamat`, `isi`, `gambar`, `akabest`) VALUES
+(1, 'QUICK COUNT', '2022/2023', 'DEWAN PENGAWAS PROGRAMING', 'DPRD PRINGSEWU', 'JL Wismarini No 09 Pringsewu Lampung', '', '26122022051024.jpg', 'mardybest@gmail.com'),
+(2, 're', '', 'MARDIYANTO', '19081989578978975', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `submenu`
+--
+
+CREATE TABLE `submenu` (
+  `id_submenu` int(100) NOT NULL,
+  `id_menu` int(100) NOT NULL,
+  `nama_sub` varchar(100) NOT NULL,
+  `link_sub` text NOT NULL,
+  `icon_sub` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `submenu`
+--
+
+INSERT INTO `submenu` (`id_submenu`, `id_menu`, `nama_sub`, `link_sub`, `icon_sub`) VALUES
+(1, 10, 'DESA', 'index.php?aksi=desa', 'fa-exchange'),
+(2, 10, 'KECAMATAN', 'index.php?aksi=kecamatan', 'fa-exchange'),
+(3, 10, 'TPS', 'index.php?aksi=tps', 'fa-exchange');
+
 --
 -- Indexes for dumped tables
 --
@@ -242,6 +363,12 @@ CREATE TABLE `post` (
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `aturan_pemakaian_obat`
+--
+ALTER TABLE `aturan_pemakaian_obat`
+  ADD PRIMARY KEY (`id_aturan`);
 
 --
 -- Indexes for table `basis_pengetahuan`
@@ -262,6 +389,13 @@ ALTER TABLE `hasil`
   ADD PRIMARY KEY (`id_hasil`);
 
 --
+-- Indexes for table `jadwal_pemakaian_obat`
+--
+ALTER TABLE `jadwal_pemakaian_obat`
+  ADD PRIMARY KEY (`id_jadwal`),
+  ADD KEY `id_aturan` (`id_aturan`);
+
+--
 -- Indexes for table `kondisi`
 --
 ALTER TABLE `kondisi`
@@ -272,6 +406,12 @@ ALTER TABLE `kondisi`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`id_member`);
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id_menu`);
 
 --
 -- Indexes for table `penyakit`
@@ -286,9 +426,26 @@ ALTER TABLE `post`
   ADD PRIMARY KEY (`kode_post`);
 
 --
+-- Indexes for table `profil`
+--
+ALTER TABLE `profil`
+  ADD PRIMARY KEY (`id_profil`);
+
+--
+-- Indexes for table `submenu`
+--
+ALTER TABLE `submenu`
+  ADD PRIMARY KEY (`id_submenu`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `aturan_pemakaian_obat`
+--
+ALTER TABLE `aturan_pemakaian_obat`
+  MODIFY `id_aturan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `basis_pengetahuan`
 --
@@ -303,7 +460,12 @@ ALTER TABLE `gejala`
 -- AUTO_INCREMENT for table `hasil`
 --
 ALTER TABLE `hasil`
-  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `jadwal_pemakaian_obat`
+--
+ALTER TABLE `jadwal_pemakaian_obat`
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `kondisi`
 --
@@ -313,17 +475,42 @@ ALTER TABLE `kondisi`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `id_member` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_member` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `penyakit`
 --
 ALTER TABLE `penyakit`
-  MODIFY `kode_penyakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `kode_penyakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `kode_post` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `kode_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `profil`
+--
+ALTER TABLE `profil`
+  MODIFY `id_profil` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `submenu`
+--
+ALTER TABLE `submenu`
+  MODIFY `id_submenu` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `jadwal_pemakaian_obat`
+--
+ALTER TABLE `jadwal_pemakaian_obat`
+  ADD CONSTRAINT `jadwal_pemakaian_obat_ibfk_1` FOREIGN KEY (`id_aturan`) REFERENCES `aturan_pemakaian_obat` (`id_aturan`) ON DELETE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

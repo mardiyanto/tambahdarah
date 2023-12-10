@@ -4,32 +4,50 @@ $module = $_GET['module'];
 <li><a <?php if ($module == "") echo 'class="active"'; ?> href="./"><i class="fa fa-home"></i> <span>Beranda</span></a><li>
   <div class="container"></div>
   <?php
-  if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
+  if (isset($_SESSION['user']) && isset($_SESSION['pass'])) {
       ?>
-    <li><a <?php if ($module == "admin") echo 'class="active"'; ?> href="admin"><i class="fa fa-user"></i> <span>Admin</span></a><li>
-      <div class="container"></div>	
-    <li><a <?php if ($module == "penyakit") echo 'class="active"'; ?> href="penyakit"><i class="fa fa-bug"></i> <span>Penyakit</span></a><li>
-      <div class="container"></div>	
-    <li><a <?php if ($module == "gejala") echo 'class="active"'; ?> href="gejala"><i class="fa fa-eyedropper"></i> <span>Gejala</span></a><li>
-      <div class="container"></div>
-    <li><a <?php if ($module == "member") echo 'class="active"'; ?> href="member"><i class="fa fa-user-plus"></i> <span>member</span></a><li>
-    <div class="container"></div>  
-    <li><a <?php if ($module == "pengetahuan") echo 'class="active"'; ?> href="pengetahuan"><i class="fa fa-flask"></i> <span>Pengetahuan</span></a><li>
-      <div class="container"></div>
-    <li><a <?php if ($module == "post") echo 'class="active"'; ?> href="post"><i class="fa fa-file-text"></i> <span>Post Keterangan</span></a><li>
-      <div class="container"></div>
-    <li><a <?php if ($module == "password") echo 'class="active"'; ?> href="password"><i class="fa fa-edit"></i> <span>Ubah Password</span></a><li>
-      <div class="container"></div>
+   <li class="treeview">
+              <a href="#">
+                <i class="fa fa-edit"></i>
+                <span>Profil</span>
+                <span class="label label-primary pull-right">2</span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="member/editmember/<?php echo"$_SESSION[id_member]"; ?>"><i class="fa fa-circle-o"></i>Data Diri</a></li>
+                <li><a href="password"><i class="fa fa-circle-o"></i>Ubah Password</a></li>
+              </ul>
+    </li> 
+   <li class="treeview">
+              <a href="#">
+                <i class="fa fa-commenting-o"></i>
+                <span>Edukasi</span>
+                <span class="label label-primary pull-right">3</span>
+              </a>
+              <ul class="treeview-menu">
+              <li><a href="keterangan"><i class="fa fa-commenting-o"></i> <span>Pengetahuan</span></a><li>
+              <li><a href="ketpenyakit"><i class="fa fa-bug"></i> <span>Jenis Penyakit</span></a><li>
+                <li><a href="diagnosa"><i class="fa fa-circle-o"></i> Input Diagnosa</a></li>
+                <li><a href="riwayat"><i class="fa fa-circle-o"></i> Riwayat Diagnosa</a></li>
+              </ul>
+    </li>  
+    <li class="treeview">
+              <a href="#">
+                <i class="fa fa-clock-o"></i>
+                <span>Konsumsi TTD</span>
+                <span class="label label-primary pull-right">2</span>
+              </a>
+              <ul class="treeview-menu">
+              <li><a href="obat"><i class="fa fa-circle-o"></i> <span>Input Data</span></a><li>
+              <li><a href="obat/jadwalobat"><i class="fa fa-circle-o"></i> Jadwal Konsumsi</a></li>
+              </ul>
+    </li>  
       <?php
   }else {
       ?>
-    <li><a <?php if ($module == "diagnosa") echo 'class="active"'; ?> href="diagnosa"><i class="fa fa-search-plus"></i> <span>Diagnosa</span></a><li>
+   
+    
       <div class="container"></div>
-    <li><a <?php if ($module == "riwayat") echo 'class="active"'; ?> href="riwayat"><i class="fa fa-clock-o"></i> <span>Riwayat</span></a><li>
-      <div class="container"></div>
-    <li><a <?php if ($module == "keterangan") echo 'class="active"'; ?> href="keterangan"><i class="fa fa-commenting-o"></i> <span>Keterangan</span></a><li>
-      <div class="container"></div>
-
+      <li><a <?php if ($module == "keterangan") echo 'class="active"'; ?> href="member/daftar/tambahdata"><i class="fa fa-commenting-o"></i> <span>Daftar</span></a><li>
       <div class="container"></div>
       <?php
   }

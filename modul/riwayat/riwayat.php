@@ -26,7 +26,7 @@ switch ($_GET[act]) {
             $arspkt[$rpkt['kode_penyakit']] = $rpkt['srn_penyakit'];
         }
 
-        $tampil = mysqli_query($conn,"SELECT * FROM hasil ORDER BY id_hasil");
+        $tampil = mysqli_query($conn,"SELECT * FROM hasil where id_member='$_SESSION[id_member]' ORDER BY id_hasil");
         $baris = mysqli_num_rows($tampil);
         if ($baris > 0) {
             echo"<div class='row'><div class='col-md-8'><table class='table table-bordered table-striped riwayat' style='overflow-x=auto' cellpadding='0' cellspacing='0'>
@@ -41,7 +41,7 @@ switch ($_GET[act]) {
           </thead>
 		  <tbody>
 		  ";
-            $hasil = mysqli_query($conn,"SELECT * FROM hasil ORDER BY id_hasil limit $offset,$limit");
+            $hasil = mysqli_query($conn,"SELECT * FROM hasil where id_member='$_SESSION[id_member]' ORDER BY id_hasil limit $offset,$limit");
             $no = 1;
             $no = 1 + $offset;
             $counter = 1;

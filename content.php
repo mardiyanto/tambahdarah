@@ -25,11 +25,19 @@ include "modul/pengetahuan/pengetahuan.php";
 include "modul/password/password.php";
 }elseif ($module == "keterangan"){
 include "modul/keterangan.php";
+}elseif ($module == "ketpenyakit"){
+include "modul/ketpenyakit.php";
 }elseif ($module == "riwayat"){
 include "modul/riwayat/riwayat.php";
 }elseif ($module == "riwayat-detail"){
 include "modul/riwayat/detail.php";
 }elseif ($module == "formlogin"){
 include "modul/formlogin.php";
+}elseif ($module == "login"){
+include "modul/formloginmember.php";
+}elseif ($module == "daftar"){
+include "modul/daftar/daftar.php";
+}elseif ($module == "obat"){
+include "modul/tambahttd/ttd.php";
 }
 ?>

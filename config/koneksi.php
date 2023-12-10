@@ -11,6 +11,8 @@
   } else {
       echo "Koneksi success";
   } */
+  $url='http://localhost/tambahdarah/';
+  $urladm='http://localhost/tambahdarah/adminweb/';
 ?> 
 
 

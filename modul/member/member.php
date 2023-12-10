@@ -2,7 +2,7 @@
 <?php
 
 session_start();
-if (!(isset($_SESSION['username']) && isset($_SESSION['password']))) {
+if (!(isset($_SESSION['user']) && isset($_SESSION['pass']))) {
     header('location:index.php');
     exit();
 } else {
@@ -66,7 +66,7 @@ switch($_GET[act]){
   <div class='col-xs-12'>
     <div class='box'>
       <div class='box-header'>
-        <h3 class='box-title'>Responsive Hover Table</h3><br><br>
+        <h3 class='box-title'>Data Member</h3><br><br>
         <a href='member/tambahdata' class='btn btn-sm btn-default'>Tambah</a>
 
       </div><!-- /.box-header -->
@@ -79,7 +79,7 @@ switch($_GET[act]){
             <th>aksi</th>
           </tr>";
           $no=0;
-          $hasil = mysqli_query($conn,"SELECT * FROM member");
+          $hasil = mysqli_query($conn,"SELECT * FROM member WHERE id_member='$_SESSION[id_member]'");
           while ($r=mysqli_fetch_array($hasil)){
             $no++;
          echo" <tr>
@@ -87,7 +87,6 @@ switch($_GET[act]){
             <td>$r[nama]</td>
             <td>$r[email]</td>
             <td align=center><a type='button' class='btn btn-success margin' href=member/editmember/$r[id_member]><i class='fa fa-pencil-square-o' aria-hidden='true'></i> Ubah </a> &nbsp;
-	          <a type='button' class='btn btn-danger margin' href=\"JavaScript: confirmIt('Anda yakin akan menghapusnya ?','$aksi?module=member&act=hapus&id=$r[id_member]','','','','u','n','Self','Self')\" onMouseOver=\"self.status=''; return true\" onMouseOut=\"self.status=''; return true\"><i class='fa fa-trash-o' aria-hidden='true'></i> Hapus</a>
              </td>
           </tr>";
           }
@@ -135,7 +134,7 @@ switch($_GET[act]){
           <option value='Perempuan'>Perempuan</option>
         </select></td></tr>
           <tr><td width=120>Nomor Hp</td><td> <input type='number' class='form-control'  name='no_hp' value='$r[no_hp]' placeholder='no hp'></td></tr>
-          <tr><td width=120>Tempat Lahir</td><td><input type='text' class='form-control'  name='tempat_lahir' value='$r[email]' placeholder='Tempat Lahir'></td></tr>
+          <tr><td width=120>Tempat Lahir</td><td><input type='text' class='form-control'  name='tempat_lahir' value='$r[tempat_lahir]' placeholder='Tempat Lahir'></td></tr>
           <tr><td width=120>Tanggal Lahir</td><td><input type='date' class='form-control'  name='tgl_lahir' value='$r[tgl_lahir]' placeholder='Tanggal Lahir'></td></tr>
           <tr><td width=120>Alamat</td><td><input type='text' class='form-control'  name='alamat' value='$r[alamat]' placeholder='Alamat Lengkap'></td></tr>
           <tr><td width=120>Pasword</td><td><input type='text' class='form-control'  name='password' value='$r[show_pass]' placeholder='Password login'></td></tr>
